@@ -65,7 +65,7 @@ const Form = () => {
         formData.append("picturePath", values.picture.name);
 
         const savedUserResponse = await fetch(
-            "http://localhost/8080/register",
+            "http://localhost/8080/register/",
             {
                 method: "POST",
                 body: formData,
@@ -81,7 +81,7 @@ const Form = () => {
 
     const login = async (values, onSubmitProps) => {
         const loggedInResponse = await fetch(
-            "http://localhost/8080/login",
+            "http://localhost/8080/login/",
             {
                 method: "POST",
                 headers: {"Content-Type": "application/json"},
@@ -124,7 +124,7 @@ const Form = () => {
                     handleBlur,
                     handleChange,
                     handleSubmit,
-                    setFieldvalue,
+                    setFieldValue,
                     resetForm,
                 }) => (
                     <form onSubmit={handleSubmit}>
@@ -186,12 +186,12 @@ const Form = () => {
                                             p="1rem"
                                         >
                                             <Dropzone
-                                                acceptedFiles=".jpg,.jpeg,.png"
-                                                multiple={false}
-                                                onDrop={(acceptedFiles) => {
-                                                    setFieldvalue("picture", acceptedFiles[0])
-                                                }}
-                                            >
+                    acceptedFiles=".jpg,.jpeg,.png"
+                    multiple={false}
+                    onDrop={(acceptedFiles) =>
+                      setFieldValue("picture", acceptedFiles[0])
+                    }
+                  >
                                                 {({getRootProps, getInputProps}) => (
                                                     <Box
                                                         {...getRootProps()}
